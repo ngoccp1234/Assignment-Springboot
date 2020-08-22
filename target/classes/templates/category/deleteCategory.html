@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/admin}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div align="center">
+        <h1>Delete Category</h1>
+        <br/>
+        <form action="#" th:action="@{/admin/deleteCategory/{id}(id=${categoryDelete.id})}"
+              th:object="${categoryDelete}"
+              method="post">
+
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>Id:</td>
+                    <td th:text="${categoryDelete.id}"></td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td th:text="${categoryDelete.name}"></td>
+                </tr>
+                <tr>
+                    <td>Code:</td>
+                    <td th:text="${categoryDelete.code}"></td>
+                </tr>
+                <tr>
+                    <td>Url:</td>
+                    <td th:text="${categoryDelete.url}"></td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td th:text="${categoryDelete.status}"></td>
+                </tr>
+                <tr>
+                    <td><a th:href="@{'/admin/categories'}">List Category</a></td>
+                    <td>
+                        <button class="btn-primary" type="submit">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/admin}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div align="center">
+        <h1>Create New Product</h1>
+        <br/>
+        <form action="#" th:action="@{/admin/addProduct}" th:object="${product}"
+              method="post">
+
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>Product Name:</td>
+                    <td><input type="text" th:field="${product.name}" required/></td>
+                </tr>
+                <tr>
+                    <td>Price:</td>
+                    <td><input type="number" th:field="${product.price}" required/></td>
+                </tr>
+                <tr>
+                    <td>Quantity:</td>
+                    <td><input type="number" th:field="${product.quantity}" required/></td>
+                </tr>
+                <tr>
+                    <td>Category:</td>
+                    <td><label>
+                        <select th:field="${product.category_id}">
+                            <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
+                        </select>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td><input type="text" th:field="${product.description}" required/></td>
+                </tr>
+                <tr>
+                    <td>Detail:</td>
+                    <td><input type="text" th:field="${product.detail}" required/></td>
+                </tr>
+                <input type="hidden" th:field="${product.createdAt}"/>
+                <tr>
+                    <td>
+                        <a th:href="@{'/admin/products'}">List Products</a>
+                    </td>
+                    <td>
+                        <button class="btn-primary" type="submit">Submit</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

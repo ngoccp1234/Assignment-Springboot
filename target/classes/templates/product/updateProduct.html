@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/admin}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <div align="center">
+        <h1>Update Product</h1>
+        <br />
+        <form action="#" th:action="@{/admin/updateProduct/{id}(id=${productUpdate.id})}" th:object="${productUpdate}"
+              method="post">
+
+            <table border="0" cellpadding="10">
+                <td><input type="hidden" th:field="${productUpdate.id}" required/></td>
+                <tr>
+                    <td>Product Name:</td>
+                    <td><input type="text" th:field="${productUpdate.name}" required/></td>
+                </tr>
+                <tr>
+                    <td>Price:</td>
+                    <td><input type="number" th:field="${productUpdate.price}" required/></td>
+                </tr>
+                <tr>
+                    <td>Quantity:</td>
+                    <td><input type="number" th:field="${productUpdate.quantity}" required/></td>
+                </tr>
+                <tr>
+                    <td>Category:</td>
+                    <td><label>
+                        <select th:field="${productUpdate.category_id}">
+                            <option th:each="c : ${categoriesProduct}" th:value="${c.id}" th:text="${c.name}"></option>
+                        </select>
+                    </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td><input type="text" th:field="${productUpdate.description}" required/></td>
+                </tr>
+                <tr>
+                    <td>Detail:</td>
+                    <td><input type="text" th:field="${productUpdate.detail}" required/></td>
+                </tr>
+
+                <td><input type="hidden" th:field="${productUpdate.createdAt}" required/></td>
+
+                <tr>
+                    <td>Status:</td>
+                    <td><input type="text" th:field="${productUpdate.status}"required /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a th:href="@{'/admin/products'}">List Product</a>
+                    </td>
+                    <td><button class=btn-primary type="submit">Save</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

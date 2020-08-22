@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/admin}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div align="center">
+        <h1>Delete Product</h1>
+        <br />
+        <form action="#" th:action="@{/admin/deleteProduct/{id}(id=${productDelete.id})}" th:object="${productDelete}"
+              method="post">
+
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>Id:</td>
+                    <td th:text="${productDelete.id}"></td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td th:text="${productDelete.name}"></td>
+                </tr>
+                <tr>
+                    <td>Price:</td>
+                    <td th:text="${productDelete.price}"></td>
+                </tr>
+                <tr>
+                    <td>Quantity:</td>
+                    <td th:text="${productDelete.quantity}"></td>
+                </tr>
+                <tr>
+                    <td>Category:</td>
+                    <td th:text="${productDelete.category.name}"></td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td th:text="${productDelete.description}"></td>
+                </tr>
+                <tr>
+                    <td>Detail:</td>
+                    <td th:text="${productDelete.detail}"></td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td th:text="${productDelete.status}"></td>
+                </tr>
+                <tr>
+                    <td><a th:href="@{'/admin/products'}">List Product</a></td>
+                    <td><button class="btn-primary" type="submit">Delete</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/admin}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <div align="center">
+        <h1>Update Category</h1>
+        <br/>
+        <form action="#" th:action="@{/admin/updateCategory/{id}(id=${categoryUpdate.id})}"
+              th:object="${categoryUpdate}"
+              method="post">
+
+            <table border="0" cellpadding="10">
+                <td><input type="hidden" th:field="${categoryUpdate.id}"/></td>
+                <tr>
+                    <td>Category Name:</td>
+                    <td><input type="text" th:field="${categoryUpdate.name}" required/></td>
+                </tr>
+                <tr>
+                    <td>Code:</td>
+                    <td><input type="text" th:field="${categoryUpdate.code}" required/></td>
+                </tr>
+                <tr>
+                    <td>Url:</td>
+                    <td><input type="text" th:field="${categoryUpdate.url}" required/></td>
+                </tr>
+
+                <td><input type="hidden" th:field="${categoryUpdate.createdAt}"/></td>
+
+                <tr>
+                    <td>Status:</td>
+                    <td><input type="text" th:field="${categoryUpdate.status}" required/></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a th:href="@{'/admin/categories'}">List Category</a>
+                    </td>
+                    <td>
+                        <button class=btn-primary type="submit">Save</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>
